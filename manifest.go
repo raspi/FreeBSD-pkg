@@ -1,5 +1,20 @@
 package freebsdpkg
 
+// Hash types
+// See https://github.com/freebsd/pkg/blob/caf7e16b3e776c768971460676e1dc63f535a721/libpkg/private/pkg.h#L448
+type hashType uint8
+
+const (
+	HashSHA256_Base32 hashType = iota
+	HashSHA256_Hex
+	HashBLAKE2_Base32
+	HashSHA256_Raw
+	HashBLAKE2_Raw
+	HashBLAKE2S_Base32
+	HashBLAKE2S_Raw
+	HashUnknown
+)
+
 // Shell commands
 type Scripts struct {
 	PostInstall   string `json:"post-install"`   // Shell command(s)
@@ -24,11 +39,11 @@ type Manifest struct {
 	Version      string       `json:"version"`
 	Comment      string       `json:"comment"` // Short description
 	Maintainer   string       `json:"maintainer"`
-	Url          string       `json:"www"`    // Project WWW address
-	Abi          string       `json:"abi"`    // "FreeBSD:13:*"
-	Architecture string       `json:"arch"`   // "freebsd:13:*"
-	Prefix       string       `json:"prefix"` // "/usr/local"
-	Flatsize     int          `json:"flatsize"`
+	Url          string       `json:"www"`          // Project WWW address
+	Abi          string       `json:"abi"`          // "FreeBSD:13:*"
+	Architecture string       `json:"arch"`         // "freebsd:13:*"
+	Prefix       string       `json:"prefix"`       // "/usr/local"
+	Flatsize     int          `json:"flatsize"`     // Size when all files are unpacked
 	LicenseLogic string       `json:"licenselogic"` // "single"
 	Licenses     []string     `json:"licenses"`     // List of licenses
 	Description  string       `json:"desc"`         // Long description
