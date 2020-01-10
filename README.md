@@ -1,3 +1,3 @@
 # FreeBSD-pkg
 
-Golang library for generating FreeBSD +MANIFESTO JSON files
+Golang library for generating FreeBSD +MANIFEST JSON files
